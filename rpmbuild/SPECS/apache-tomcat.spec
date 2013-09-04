@@ -16,7 +16,8 @@ Source1:	apache-tomcat.init
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
-This tomcat version is used by the Opsource Cloud Billing and Payment product.
+Apache Tomcat is an open source software implementation of the Java Servlet and JavaServer Pages technologies. 
+The Java Servlet and JavaServer Pages specifications are developed under the Java Community Process.
 
 %prep
 %setup -q
