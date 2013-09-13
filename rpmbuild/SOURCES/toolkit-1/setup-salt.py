@@ -37,40 +37,41 @@ def install_salt(target):
 	elif target == "minion":
 		os.system("yum install salt-minion")
 		os.system("chkconfig salt-minion on")
-
-def usage():
-	print "Usage:",sys.argv[0],"  [options]"
-        print
-        print "Options:"
-	print " master\t\t\tInstalls salt-master on the host."
-	print " minion\t\t\tInstalls salt-minion on the host."
-#	print " -master-ip=ipaddress\tIP address of the master where minion should point"
-        print " -h, --help\t\tshow this help message and exit"
-	print
-
-def usage_error():
-	print "Usage:",sys.argv[0],"  [options]"
-	print
-	print sys.argv[0],": error: no such option: ",sys.argv[1]
-	print
 	
-# GLOBAL VARIABLES DECLERATION
+def show_usage():
+    print
+    print "Usage:",sys.argv[0],"  [options]"
+    print
+    print "Options:"
+    print " master\t\t\tInstalls salt-master on the host."
+    print " minion\t\t\tInstalls salt-minion on the host."
+    print " -h, --help\t\tshow this help message and exit"
+    print
+    exit(1)
 
-if (len(sys.argv) == 1):
-        usage()
-        exit(0)
-elif (len(sys.argv) == 1) | (sys.argv[1] == "--help") | (sys.argv[1] == "-h"):
-	usage()
-	exit(0)
-elif (sys.argv[1] == ""):
-        usage_error()
-        exit(1)
-elif ((sys.argv[1] <> "master") & (sys.argv[1] <> "minion")):
-	usage_error()
-	exit(1) 
+# Commandline parameter validation
+
+def validate_commandline():
+    number_of_parameters = len(sys.argv)
+    if number_of_parameters > 2:
+        print "Incorrect number of parameters. Please read the usage."
+        show_usage()
+    elif number_of_parameters == 1:
+        show_usage()
+    elif (sys.argv[1] != "master") & (sys.argv[1] != "minion") & (sys.argv[1] != "-h") & (sys.argv[1] != "--help"):
+	print
+        print sys.argv[0],": error: no such option: ",sys.argv[1]
+        show_usage()
+    elif (sys.argv[1] == "-h") | (sys.argv[1] == "--help") | (not sys.argv[1]):
+        show_usage()
+    elif sys.argv[1] == "master":
+        target = "master"
+    else:
+        target = "minion"
+    return target
 
 dist=platform.linux_distribution()
-target = sys.argv[1]
+target = validate_commandline()
 
 # Main Body
 print
@@ -96,33 +97,21 @@ elif (choice == 'y') | (choice == 'Y')| ( not choice):
 Documentation
 =============
 
-TODO
-====
-1 - Update the RHEL versions in enable_epel()
-2 - Remove the RHN password while using spacewalk-channel under subscribe_redhat_server_options_channel()
-3 - subscribe_redhat_server_options_channel() should parse the system file to find the username for RHN registration.
-4 - Add support for accepting the master IP address in command line for minion configuration.
-5 - Consolidate the usage() and usage_error() functions
-6 - Better validation of command line parameters.
-7 - Update the Exit codes.
-8 - Update the Test cases.
+Known Bugs
+===========
+BZ1 - Update the RHEL versions in enable_epel()
+BZ2 - Remove the RHN password while using spacewalk-channel under subscribe_redhat_server_options_channel()
+BZ3 - subscribe_redhat_server_options_channel() should parse the system file to find the username for RHN registration.
 
+Future Enhancements
+===================
+EN1 - Add support for accepting the master IP address in command line for minion configuration.
+EN2 - Consolidate the usage() and usage_error() functions.......................................................................Completed
+EN3 - Better validation of command line parameters..............................................................................Completed
 
-Exit codes
-==========
-0 - 
-1 - 
-2 - 
-
-
-Test Cases
-==========
-
-
-1 - 
-
-
-"""
 
 ### Change log
-
+Fri Sep 13 11:50:48 EDT 2013:
+	Initial script completed.
+	Fixed enhancements EN2 and EN3
+"""
