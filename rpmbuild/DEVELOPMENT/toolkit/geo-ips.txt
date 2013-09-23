@@ -1,0 +1,9 @@
+Ashburn:admin.opsourcecloud.net:168.143.82.64
+Santa Clara:admin.opsourcecloud.net:168.143.82.64
+Amsterdam:eu.opsourcecloud.net83.217.254.0
+Sydney:au.opsourcecloud.net:103.23.112.216
+Johannesburg:af.opsourcecloud.net:197.96.16.212
+Tokyo:ap.opsourcecloud.net:202.235.112.212
+Hong Kong:ap.opsourcecloud.net:202.235.112.212
+Jakarta:idadmintest.opsourcecloud.net:114.4.64.208
+Ahmedabad:inadmintest.opsourcecloud.net:117.239.176.211
