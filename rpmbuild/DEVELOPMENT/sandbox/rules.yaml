@@ -1,16 +1,29 @@
+#This files defiles the way data is structured for opstest to work as expected. The first column/key in each section takes the form of the argument that can be passed to opstest.py.
+#
 db:
   target: 10.192.2.13
   ports:
-   port0: 8080
-   port1: 22
-   port2: 4505
-   port3: 4506
-   port4: 80
+   - 8080
+   - 22
+   - 4505
+   - 4506
+   - 80
+
 ftps:
   target: 10.192.2.13
   ports:
-   port0: 20
-   port1: 21
-   port2: 80
-   port3: 443
+   - 20
+   - 21
+   - 80
+   - 443
+
+ldap:
+  target:
+  ports:
+   - 
+
+cloud manager:
+  target:
+  ports:
+   - 
 
