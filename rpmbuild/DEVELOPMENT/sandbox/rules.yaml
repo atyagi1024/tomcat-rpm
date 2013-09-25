@@ -1,0 +1,16 @@
+db:
+  target: 10.192.2.13
+  ports:
+   port0: 8080
+   port1: 22
+   port2: 4505
+   port3: 4506
+   port4: 80
+ftps:
+  target: 10.192.2.13
+  ports:
+   port0: 20
+   port1: 21
+   port2: 80
+   port3: 443
+
